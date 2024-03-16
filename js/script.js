@@ -1,5 +1,18 @@
 const myLibrary = [];
 const TABLE = document.querySelector(".Books_Table");
+const DIALOG = document.querySelector(".dialog");
+const BOOK = document.querySelector("#book");
+const AUTHOR = document.querySelector("#author");
+const PAGES = document.querySelector("#pages");
+const READ = document.querySelector("#read");
+const SHOWBTN = document.querySelector("#show");
+const ADDBTN = document.querySelector("#add");
+
+SHOWBTN.addEventListener("click", () => DIALOG.showModal());
+
+ADDBTN.addEventListener("click", () =>
+  addBookToLibrary(BOOK.value, AUTHOR.value, PAGES.value, READ.checked)
+);
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -15,6 +28,12 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
+  BOOK.value = "";
+  AUTHOR.value = "";
+  PAGES.value = "";
+  READ.checked = false;
+  DIALOG.close();
+  displayBooks();
 }
 
 function clearTable(table) {
