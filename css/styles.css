@@ -19,6 +19,13 @@ th {
   padding: 10px 60px;
 }
 
+th:last-child,
+td:last-child {
+  padding: 0;
+  border: 0;
+  padding-left: 30px;
+}
+
 .dialog {
   margin-left: 0;
   margin-right: 0;

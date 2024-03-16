@@ -19,10 +19,6 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-  // this.info = function(){
-  //     return this.title + " by " + this.author +
-  //     ", " + this.pages + " pages, " + (this.read ? " already read": "not read yet");
-  // }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -57,6 +53,18 @@ function displayBooks() {
     input.type = "checkbox";
     input.checked = myLibrary[i].read;
     input.id = i;
+    input.addEventListener(
+      "click",
+      () => (myLibrary[input.id].read = input.checked)
+    );
+    const btn = row.insertCell(4).appendChild(document.createElement("button"));
+    btn.classList.add("btn");
+    btn.textContent = "remove book";
+    btn.id = i;
+    btn.addEventListener("click", () => {
+      myLibrary.splice(btn.id, 1);
+      displayBooks();
+    });
   }
 }
 
